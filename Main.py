@@ -6,17 +6,34 @@ class Node:
 
 class Queue:
   def __init__(self):
-    self.head = None
-    self.last = None
+    self.front = None
+    self.rear = None
 
   def enqueue(self, data) -> None:
-    # Write your code here
+      rear = self.rear
+      node = Node(data)
+      if(self.rear is None and self.front is None):
+        self.rear , self.front = node , node
+      else:
+        self.rear.next = node
+        self.rear = node
 
   def dequeue(self) -> None:
-    # Write your code here
+    if self.front is not None:
+      self.front = self.front.next
+    else:
+      print("Queue is Empty")
+
+    if self.rear.next is None:
+      self.front = None
+      self.rear = None
 
   def status(self) -> None:
-    # Write your code here
+    ptr = self.front
+    while ptr:
+      print(ptr.data,end = "=>")
+      ptr = ptr.next
+    print("None")
 
 
 # Do not change the following code
