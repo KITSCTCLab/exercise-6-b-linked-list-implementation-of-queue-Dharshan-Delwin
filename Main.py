@@ -1,42 +1,40 @@
 class Node:
-  def __init__(self, data,next):
-    self.data = None
+  def __init__(self, data):
+    self.data = data
     self.next = None
-
 
 class Queue:
   def __init__(self):
-    self.front = None
-    self.rear = None
+    self.head = None
+    self.last = None
 
   def enqueue(self, data) -> None:
-      rear = self.rear
+      last = self.last
       node = Node(data)
-      if(self.rear is None and self.front is None):
-        self.rear , self.front = node , node
+      if(self.last is None and self.head is None):
+        self.last , self.head = node , node
       else:
-        self.rear.next = node
-        self.rear = node
+        self.last.next = node
+        self.last = node
 
   def dequeue(self) -> None:
-    if self.front is not None:
-      self.front = self.front.next
+    if self.head is not None:
+      self.head = self.head.next
     else:
       print("Queue is Empty")
 
-    if self.rear.next is None:
-      self.front = None
-      self.rear = None
+    if self.head.next is None:
+      self.head = None
+      self.last = None
 
   def status(self) -> None:
-    ptr = self.front
+    ptr = self.head
     while ptr:
       print(ptr.data,end = "=>")
       ptr = ptr.next
     print("None")
 
 
-# Do not change the following code
 queue = Queue()
 operations = []
 for specific_operation in input().split(','):
