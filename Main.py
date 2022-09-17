@@ -3,17 +3,14 @@ class Node:
     self.data = data
     self.next = None
 
-
 class Queue:
   def __init__(self):
     self.head = None
     self.last = None
 
-
   def enqueue(self, data) -> None:
       last = self.last
       node = Node(data)
-
       if(self.last is None and self.head is None):
         self.last , self.head = node , node
       else:
@@ -32,11 +29,11 @@ class Queue:
 
   def status(self) -> None:
     ptr = self.head
-    
     while ptr:
       print(ptr.data,end = "=>")
       ptr = ptr.next
     print("None")
+
 
 queue = Queue()
 operations = []
